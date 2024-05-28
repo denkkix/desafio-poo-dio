@@ -2,6 +2,9 @@ import br.com.dio.desafio.dominio.Bootcamp;
 import br.com.dio.desafio.dominio.Curso;
 import br.com.dio.desafio.dominio.Dev;
 import br.com.dio.desafio.dominio.Mentoria;
+import br.com.dio.desafio.dominio.Professor;
+import br.com.dio.desafio.dominio.Projetos;
+import br.com.dio.desafio.dominio.Certificacao;
 
 import java.time.LocalDate;
 
@@ -22,10 +25,6 @@ public class Main {
         mentoria.setDescricao("descrição mentoria java");
         mentoria.setData(LocalDate.now());
 
-        /*System.out.println(curso1);
-        System.out.println(curso2);
-        System.out.println(mentoria);*/
-
         Bootcamp bootcamp = new Bootcamp();
         bootcamp.setNome("Bootcamp Java Developer");
         bootcamp.setDescricao("Descrição Bootcamp Java Developer");
@@ -44,19 +43,39 @@ public class Main {
         System.out.println("Conteúdos Concluídos Camila:" + devCamila.getConteudosConcluidos());
         System.out.println("XP:" + devCamila.calcularTotalXp());
 
-        System.out.println("-------");
+        System.out.println("_________");
+        Certificacao certificadoJava = new Certificacao();
+        certificadoJava.geradorCertificado("OPP Java", devCamila.getNome(), "2013-02-05", "GHJSBN");
+        certificadoJava.exibirCertificados();
 
-        Dev devJoao = new Dev();
-        devJoao.setNome("Joao");
-        devJoao.inscreverBootcamp(bootcamp);
-        System.out.println("Conteúdos Inscritos João:" + devJoao.getConteudosInscritos());
-        devJoao.progredir();
-        devJoao.progredir();
-        devJoao.progredir();
-        System.out.println("-");
-        System.out.println("Conteúdos Inscritos João:" + devJoao.getConteudosInscritos());
-        System.out.println("Conteúdos Concluidos João:" + devJoao.getConteudosConcluidos());
-        System.out.println("XP:" + devJoao.calcularTotalXp());
+        System.out.println("__________");
+        Professor Diego = new Professor("Diego Paulista", "Desenvolvedor Senior");
+        Diego.adicionarCurso(curso1);
+        Diego.adicionarCurso(curso2);
+        Diego.exibirCursos();
+        Diego.removerCurso(curso2);
+        Diego.exibirCursos();
+
+        System.out.println("__________");
+        Diego.adicionarMentoria(mentoria);
+        Diego.exibirMentorias();
+
+        System.out.println("__________");
+        Projetos pooProjeto = new Projetos();
+        pooProjeto.adicionarProj("Poo Java", "Aprendendo sobre POO");
+        pooProjeto.adicionarTec("Java");
+        pooProjeto.adicionarMembros(devCamila);
+        pooProjeto.adicionarTec("SpringBoot");
+        pooProjeto.adicionarMembros(devCamila);
+        pooProjeto.adicionarMembros(devCamila);
+        pooProjeto.adicionarMembros(devCamila);
+        pooProjeto.adicionarMembros(devCamila);
+        pooProjeto.adicionarMembros(devCamila);
+        System.out.println("Quantidade de Membros:" + pooProjeto.obterNumeroMembros());
+        pooProjeto.obterTecnologiasUsadas();
+        pooProjeto.removerMembros(devCamila);
+        System.out.println("Quantidade de Membro:" + pooProjeto.obterNumeroMembros());
+
 
     }
 
